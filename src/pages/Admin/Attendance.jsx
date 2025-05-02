@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import Sidebar from './Sidebar';
 import axios from 'axios';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {
   AttendanceContainer,
   Content,
@@ -54,17 +56,31 @@ const Attendance = () => {
 
   const handleSubmit = async () => {
     try {
-      // Send attendance data to the database
-      const formattedData = attendanceData.map(({ id, name, status }) => ({ studentId: id, name, status }));
+      // Ensure every student has a valid status
+      const incompleteData = attendanceData.some((student) => !student.status);
+      
+      if (incompleteData) {
+        toast.error('Please mark attendance for all students.');
+        return;
+      }
+
+      const formattedData = attendanceData.map(({ id, status }) => ({
+        student: id,  // Send only the student ID (ObjectId), not the name
+        status,
+      }));
+
       const response = await axios.post('http://localhost:4000/api/v1/attendance', { attendanceData: formattedData });
       console.log('Attendance data submitted:', response.data);
+      toast.success('Attendance submitted successfully!');
     } catch (error) {
       console.error('Error submitting attendance data:', error);
+      toast.error('Error submitting attendance data.');
     }
   };
 
   return (
     <AttendanceContainer>
+      <ToastContainer />
       <Sidebar />
       <Content>
         <AttendanceContent>

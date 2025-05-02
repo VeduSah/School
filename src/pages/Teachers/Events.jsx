@@ -47,7 +47,7 @@ const EventSection = () => {
   return (
     <EventCalendarContainer>
       <Sidebar />
-      <Content>
+        <Content style={{ display: 'grid',justifyContent:'center' }}>
         <h1>Events & Calendar</h1>
         <div>Current Time: {new Date().toLocaleString()}</div>
         <CalendarContainer>

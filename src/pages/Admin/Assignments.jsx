@@ -27,30 +27,36 @@ const Assignments = () => {
   const fetchAssignments = async () => {
     try {
       const response = await axios.get('http://localhost:4000/api/v1/assignments/getall');
-      setAssignments(response.data.assignments);
+      if (response.data.success) {
+        setAssignments(response.data.assignments);  // Set assignments directly from the response
+      } else {
+        console.warn('Failed to fetch assignments:', response.data);
+      }
     } catch (error) {
       console.error('Error fetching assignments:', error);
     }
   };
+  
 
   const handleAddAssignment = async (e) => {
     e.preventDefault();
     if (newAssignment.title.trim() !== '' && newAssignment.description.trim() !== '' && newAssignment.grade.trim() !== '' && newAssignment.deadline.trim() !== '') {
       try {
         const response = await axios.post('http://localhost:4000/api/v1/assignments', newAssignment);
-        // Display success toast message
-        toast.success('Assignment added successfully');
-        // Add the new assignment to the list
-        setAssignments([...assignments, response.data.assignment]);
-        // Clear the form
-        setNewAssignment({ title: '', description: '', grade: '', deadline: '' });
+        if (response.data.success) {  // Ensure success is true before updating state
+          toast.success('Assignment added successfully');
+          setAssignments([...assignments, response.data.assignment]);  // Add new assignment
+          setNewAssignment({ title: '', description: '', grade: '', deadline: '' });
+        } else {
+          toast.error('Failed to add assignment');
+        }
       } catch (error) {
         console.error('Error adding assignment:', error);
-        // Display error toast message
         toast.error('Error adding assignment');
       }
     }
   };
+  
 
   return (
     <AssignmentsContainer>
@@ -86,13 +92,22 @@ const Assignments = () => {
             <AddAssignmentButton type="submit">Add Assignment</AddAssignmentButton>
           </AddAssignmentForm>
           <AssignmentList>
-            {assignments.map((assignment) => (
-              <AssignmentItem key={assignment.id}>
-                <strong>{assignment.title}: </strong>
-                {assignment.description}, {assignment.grade}, {assignment.deadline}
-              </AssignmentItem>
-            ))}
-          </AssignmentList>
+  {assignments.length === 0 ? (
+    <p>No assignments available.</p>
+  ) : (
+    assignments.map((assignment) => (
+      assignment && assignment.title ? (  // Ensure title exists before rendering
+        <AssignmentItem key={assignment._id}>
+          <strong>{assignment.title}: </strong>
+          {assignment.description}, {assignment.grade}, {assignment.deadline}
+        </AssignmentItem>
+      ) : (
+        <p key={assignment._id}>Assignment data is missing.</p>  // Handle missing data
+      )
+    ))
+  )}
+</AssignmentList>
+
         </AssignmentsContent>
       </Content>
     </AssignmentsContainer>

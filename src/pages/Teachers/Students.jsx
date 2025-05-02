@@ -25,7 +25,7 @@ const StudentSection = () => {
   return (
     <StudentsContainer>
       <Sidebar />
-      <Content>
+      <Content style={{ display: 'grid',justifyContent:'center' }}>
         <StudentsContent>
           <StudentsHeader>Students</StudentsHeader>
           <StudentList>

@@ -40,7 +40,7 @@ const Classes = () => {
     if (newClassName.trim() !== '') {
       try {
         const response = await axios.post('http://localhost:4000/api/v1/class', { grade: newClassName });
-        console.log('Response data:', response.data); // Log the response data
+        console.log('Response data:', response.data.data); // Log the response data
         setClasses(prevClasses => {
           if (Array.isArray(prevClasses)) {
             return [...prevClasses, response.data]; // Use callback function to update state

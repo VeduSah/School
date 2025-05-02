@@ -21,7 +21,7 @@ const CheckPerformanceSection = () => {
   return (
     <PerformanceContainer>
       <Sidebar />
-      <Content>
+      <Content style={{ display: 'grid',justifyContent:'center' }}> 
         <PerformanceContent>
           <PerformanceHeader>School Performance</PerformanceHeader>
           <SchoolPerformance>

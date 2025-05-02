@@ -51,7 +51,7 @@ const Teachers = () => {
       <Content>
         <TeachersContent>
           <TeachersHeader>Teachers</TeachersHeader>
-          <AddTeacherForm onSubmit={handleAddTeacher}>
+          <AddTeacherForm onSubmit={handleAddTeacher} style={{ display: 'flex', justifyContent: 'center' }}>
             <AddTeacherInput
               type="text"
               placeholder="Enter teacher name"
@@ -74,7 +74,7 @@ const Teachers = () => {
           </AddTeacherForm>
           <TeacherList>
             {teachers.map((teacher) => (
-              <TeacherItem key={teacher.id}>{teacher.name} - {teacher.email} - {teacher.subject}</TeacherItem>
+              <TeacherItem key={teacher.id} style={{ display: 'flex', justifyContent: 'center' }}>{teacher.name} - {teacher.email} - {teacher.subject}</TeacherItem>
             ))}
           </TeacherList>
         </TeachersContent>

@@ -27,15 +27,17 @@ const Exam = () => {
   const fetchExams = async () => {
     try {
       const response = await axios.get('http://localhost:4000/api/v1/exam/getall');
-      if (Array.isArray(response.data)) {
-        setExamData(response.data);
+      console.log('Fetched Exams:', response.data); // Optional, for debugging
+      if (Array.isArray(response.data.exams)) {
+        setExamData(response.data.exams);  // ✅ This is the correct line
       } else {
-        setExamData([response.data]); // Wrap non-array response in an array
+        console.warn('Unexpected exams format:', response.data);
       }
     } catch (error) {
       console.error('Error fetching exams:', error);
     }
   };
+  
 
   const handleAddExam = async (e) => {
     e.preventDefault();

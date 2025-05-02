@@ -53,8 +53,8 @@ const SidebarIcon = styled.div`
 `;
 
 const Logo = styled.img`
-  width: 50px;
-  height: auto;
+  width: 100%;
+  height: 10rem;
 `;
 
 const ToggleButton = styled.div`
@@ -88,7 +88,7 @@ const Sidebar = () => {
   return (
     <SidebarContainer style={{ width: isOpen ? '250px' : '80px' }}>
     <SidebarHeader>
-      <Logo src="../assets/bg1.png" alt="Logo" />
+      <Logo src="/logo/Abhay_school.png" alt="Logo" />
     </SidebarHeader>
     <SidebarNav>
       <SidebarNavItem>

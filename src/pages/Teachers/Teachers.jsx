@@ -25,7 +25,7 @@ const TeacherSection = () => {
   return (
     <TeachersContainer>
       <Sidebar />
-      <Content>
+       <Content style={{ display: 'grid',justifyContent:'center' }}>
         <TeachersContent>
           <TeachersHeader>Teachers</TeachersHeader>
           <TeacherList>

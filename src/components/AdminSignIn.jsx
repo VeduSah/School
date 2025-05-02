@@ -10,7 +10,7 @@ const AdminSignIn = () => {
     e.preventDefault();
   
     try {
-      const response = await axios.post('http://localhost:4000/api/v1/users/signin', { email, password }); 
+      const response = await axios.post('http://localhost:4000/api/v1/register/signin', { email, password }); 
       if (response.status === 200) {
         // Sign-in successful, redirect to admin dashboard
         window.location.href = '/admin/dashboard';

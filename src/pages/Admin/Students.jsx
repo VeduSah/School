@@ -50,7 +50,8 @@ const Students = () => {
       <Content>
         <StudentsContent>
           <StudentsHeader>Students</StudentsHeader>
-          <AddStudentForm onSubmit={handleAddStudent}>
+          <AddStudentForm onSubmit={handleAddStudent} style={{ display: 'flex', justifyContent: 'center' }}>
+
             <AddStudentInput
               type="text"
               placeholder="Enter student name"
@@ -71,11 +72,15 @@ const Students = () => {
             />
             <AddStudentButton type="submit">Add Student</AddStudentButton>
           </AddStudentForm>
-          <StudentList>
-            {students.map((student) => (
-              <StudentItem key={student.id}>{student.name} - {student.registrationNumber} - {student.grade}</StudentItem>
-            ))}
-          </StudentList>
+          <StudentList style={{ display: 'grid', justifyContent: 'center' }}>
+  {students.map((student, index) => (
+    student && student.name && student.registrationNumber && student.grade ? (
+      <StudentItem key={student.id || index}>
+        {student.name} - {student.registrationNumber} - {student.grade}
+      </StudentItem>
+    ) : null
+  ))}
+</StudentList>
         </StudentsContent>
       </Content>
     </StudentsContainer>

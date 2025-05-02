@@ -40,6 +40,7 @@ import AssignmentSection from '../src/pages/Teachers/Assignments';
 import CheckAttendanceSection from '../src/pages/Teachers/Attendance';
 import CheckExamSection from '../src/pages/Teachers/Exams';
 
+import AdminRegister from './components/AdminRegister.jsx';
 const App = () => { 
   return (
     <Router>
@@ -48,7 +49,7 @@ const App = () => {
         <Route path="/choose-user" element={<ChooseUser />} />
 
         {/* All the sign-in pages/routes */}
-
+<Route path='/admin/register' element={<AdminRegister/>}/>
         <Route exact path="/admin-signIn" element={<AdminSignIn />} />
         <Route exact path="/student-signIn" element={<StudentSignIn />} />
         <Route exact path="/teacher-signIn" element={<TeacherSignIn />} />

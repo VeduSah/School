@@ -20,11 +20,11 @@ const Home = () => {
   return (
     <>
       <Navbar>
-        <Logo src={bg1} alt="Logo" />
+        <Logo src='/logo/Abhay_school.png' alt="Logo" />
         <NavigationLinks>
-          <NavLink href="#">About Us</NavLink>
+          {/* <NavLink href="#">About Us</NavLink>
           <NavLink href="#">Products</NavLink>
-          <NavLink href="#">Contact Us</NavLink>
+          <NavLink href="#">Contact Us</NavLink> */}
         </NavigationLinks>
         <ButtonsContainer>
           <LoginButton onClick={handleLoginClick}>Sign In</LoginButton>

@@ -28,7 +28,7 @@ const Performance = () => {
     <PerformanceContainer>
       <Sidebar /> {/* Include the Sidebar component */}
       <Content>
-        <PerformanceContent>
+        <PerformanceContent style={{ display: 'grid', justifyContent: 'center' }}>
           <PerformanceHeader>School Performance</PerformanceHeader>
           <SchoolPerformance>
             <p>Average Score: {schoolPerformanceData.averageScore}</p>
