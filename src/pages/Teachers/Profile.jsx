@@ -6,11 +6,11 @@ from '../../styles/SettingsProfileStyles';
 
 const TeacherProfileSection = () => {
   const [teacherInfo, setTeacherInfo] = useState({
-    name: 'Ravi Kumar',
-    email: 'ravi.kumar@example.com',
+    name: 'Ravi Kumar Singh',
+    email: 'raviPratap.kumar@example.com',
     phone: '+91-98765-43210',  // Indian phone number format
     address: '123, MG Road, Bangalore, Karnataka, India',  // Indian address format
-    qualification: 'M.A. in Education',  // Typical Indian qualification
+    qualification: 'M.Adnkj. in Education',  // Typical Indian qualification
   });
 
 
